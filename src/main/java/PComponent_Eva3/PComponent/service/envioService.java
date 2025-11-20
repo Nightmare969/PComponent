@@ -1,0 +1,68 @@
+package PComponent_Eva3.PComponent.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import PComponent_Eva3.PComponent.model.envio;
+import PComponent_Eva3.PComponent.repository.envioRepository;
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+@SuppressWarnings("null")
+public class envioService {
+
+    @Autowired
+    private envioRepository envioRepository;
+
+    public List<envio> findAll() {
+        return envioRepository.findAll();
+    }
+
+    public envio findById(Integer id) {
+        return envioRepository.findById(id).orElse(null);
+    }
+
+    public envio save(envio envio) {
+        return envioRepository.save(envio);
+    }
+
+    public void deleteById(Integer id) {
+        envioRepository.deleteById(id);
+    }
+
+    public envio partialUpdate(envio envioData) {
+        envio existing = envioRepository.findById(envioData.getId()).orElse(null);
+        if (existing == null) {
+            return null;
+        }
+
+        if (envioData.getTipoEnvio() != null)
+            existing.setTipoEnvio(envioData.getTipoEnvio());
+
+        if (envioData.getCosto() != null)
+            existing.setCosto(envioData.getCosto());
+
+        if (envioData.getTiempoEntrega() != null)
+            existing.setTiempoEntrega(envioData.getTiempoEntrega());
+
+        if (envioData.getDireccion() != null)
+            existing.setDireccion(envioData.getDireccion());
+
+        if (envioData.getTelefono() != null)
+            existing.setTelefono(envioData.getTelefono());
+
+        if (envioData.getCorreo() != null)
+            existing.setCorreo(envioData.getCorreo());
+
+        if (envioData.getIdVenta() != null)
+            existing.setIdVenta(envioData.getIdVenta());
+
+        if (envioData.getNombre() != null)
+            existing.setNombre(envioData.getNombre());
+
+        return envioRepository.save(existing);
+    }
+}
