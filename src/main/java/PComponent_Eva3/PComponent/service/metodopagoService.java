@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import PComponent_Eva3.PComponent.model.metodopago;
+import PComponent_Eva3.PComponent.model.Eetodopago;
 import PComponent_Eva3.PComponent.repository.metodopagoRepository;
 import jakarta.transaction.Transactional;
 

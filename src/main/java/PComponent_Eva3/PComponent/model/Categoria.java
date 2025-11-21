@@ -1,5 +1,6 @@
 package PComponent_Eva3.PComponent.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,22 +13,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "VentaProducto")
+@Table(name = "categoria")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VentaProducto {
 
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @ManyToOne
-    @JoinColumn(name = "venta_id")
-    private Venta venta;
+
+    @Column(name = "nombreCategoria", length = 50, nullable = false)
+    private String nombreCategoria;    
+
+    @Column(name = "descripcion", length = 150, nullable = false)
+    private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "producto_id")
-    private Producto producto;
-    
+    @JoinColumn(name = "categoria_padre_id")
+    private Categoria categoriaPadre;
+
 }

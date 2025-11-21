@@ -2,8 +2,8 @@ package PComponent_Eva3.PComponent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import PComponent_Eva3.PComponent.model.metodoenvio;
+import PComponent_Eva3.PComponent.model.Metodoenvio;
 
-public interface metodoEnvioRepository extends JpaRepository<metodoenvio, Integer>{
+public interface metodoEnvioRepository extends JpaRepository<Metodoenvio, Integer>{
     
 }

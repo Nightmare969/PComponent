@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import PComponent_Eva3.PComponent.model.venta;
+import PComponent_Eva3.PComponent.model.Venta;
 import PComponent_Eva3.PComponent.repository.ventaRepository;
 import jakarta.transaction.Transactional;
 
@@ -17,21 +17,21 @@ public class ventaService {
     @Autowired
     private ventaRepository ventaRepository;
 
-    public List<venta> findAll() {
+    public List<Venta> findAll() {
         return ventaRepository.findAll();
     }
 
-    public venta findById(Integer id) {
-        venta venta = ventaRepository.findById(id).orElse(null);
+    public Venta findById(Integer id) {
+        Venta venta = ventaRepository.findById(id).orElse(null);
         return venta;
     }
 
-    public venta save(venta venta) {
+    public Venta save(Venta venta) {
         return ventaRepository.save(venta);
     }
 
-    public venta partialUpdate(venta venta) {
-        venta existingVenta = ventaRepository.findById(venta.getId()).orElse(null);
+    public Venta partialUpdate(Venta venta) {
+        Venta existingVenta = ventaRepository.findById(venta.getId()).orElse(null);
 
         if (existingVenta != null) {
 

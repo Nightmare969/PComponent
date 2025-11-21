@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import PComponent_Eva3.PComponent.model.metodoenvio;
+import PComponent_Eva3.PComponent.model.Eetodoenvio;
 import PComponent_Eva3.PComponent.repository.metodoEnvioRepository;
 import jakarta.transaction.Transactional;
 

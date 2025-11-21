@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import PComponent_Eva3.PComponent.model.marca;
+import PComponent_Eva3.PComponent.model.Marca;
 import PComponent_Eva3.PComponent.repository.marcaRepository;
 import jakarta.transaction.Transactional;
 
@@ -17,15 +17,15 @@ public class marcaService {
     @Autowired
     private marcaRepository marcaRepository;
 
-    public List<marca> findAll() {
+    public List<Marca> findAll() {
         return marcaRepository.findAll();
     }
 
-    public marca findById(Integer id) {
+    public Marca findById(Integer id) {
         return marcaRepository.findById(id).orElse(null);
     }
 
-    public marca save(marca marca) {
+    public Marca save(Marca marca) {
         return marcaRepository.save(marca);
     }
 
@@ -33,8 +33,8 @@ public class marcaService {
         marcaRepository.deleteById(id);
     }
 
-    public marca actualizarCategoria(Integer id, marca marcaActualizada) {
-        marca marcaExistente = marcaRepository.findById(id).orElse(null);
+    public Marca actualizarCategoria(Integer id, Marca marcaActualizada) {
+        Marca marcaExistente = marcaRepository.findById(id).orElse(null);
 
         if (marcaExistente != null) {
             marcaExistente.setNombreMarca(marcaActualizada.getNombreMarca());
@@ -44,9 +44,9 @@ public class marcaService {
         return null;
     }
 
-    public marca partialUpdate(marca marca) {
+    public Marca partialUpdate(Marca marca) {
 
-        marca existingMarca = marcaRepository.findById(marca.getId()).orElse(null);
+        Marca existingMarca = marcaRepository.findById(marca.getId()).orElse(null);
 
         if (existingMarca != null) {
 
