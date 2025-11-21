@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,26 +19,29 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 
-public class venta {
+public class Venta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; 
+    private Integer id;
 
-    @Column(name = "nombre", length = 50, nullable = false)
-    private String nombre;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
-    @Column(name = "precio", length = 50, nullable = false)
-    private Integer precio;
-    
-    @Column(name = "cantidad", length = 50, nullable = false)
-    private Integer cantidad;
+    @ManyToOne
+    @JoinColumn(name = "metodo_pago_id")
+    private MetodoPago metodoPago;
 
-    @Column(name = "telefono", length = 150, nullable = false)
-    private Integer telefono;
+    @ManyToOne
+    @JoinColumn(name = "metodo_envio_id")
+    private MetodoEnvio metodoEnvio;
 
-    @Column(name = "correo", length = 150, nullable = false) 
-    private String correo;
+    @ManyToOne
+    @JoinColumn(name = "estado_id")
+    private EstadoVenta estado;
 
+    @Column(nullable = false)
+    private String fecha;
     
 }

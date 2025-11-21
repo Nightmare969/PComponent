@@ -15,8 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class envio {
+public class Envio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class metodopago {
+public class Metodopago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

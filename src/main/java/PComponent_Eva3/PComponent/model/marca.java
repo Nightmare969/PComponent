@@ -15,8 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class marca {
+public class Marca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
