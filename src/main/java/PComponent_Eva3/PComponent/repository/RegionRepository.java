@@ -1,6 +1,6 @@
 package PComponent_Eva3.PComponent.repository;
 
-import javax.swing.plaf.synth.Region;
+import PComponent_Eva3.PComponent.model.Region;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -2,8 +2,8 @@ package PComponent_Eva3.PComponent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import PComponent_Eva3.PComponent.model.categoria;
+import PComponent_Eva3.PComponent.model.Categoria;
 
-public interface categoriaRepository extends JpaRepository<categoria, Integer>{
+public interface categoriaRepository extends JpaRepository<Categoria, Integer>{
     
 }

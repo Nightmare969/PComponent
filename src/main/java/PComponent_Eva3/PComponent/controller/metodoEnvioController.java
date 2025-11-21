@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import PComponent_Eva3.PComponent.model.metodoenvio;
+import PComponent_Eva3.PComponent.model.Metodoenvio;
 import PComponent_Eva3.PComponent.service.metodoenvioService;
 
 @RestController
@@ -25,8 +25,8 @@ public class metodoEnvioController {
     private metodoenvioService metodoenvioService;
 
     @GetMapping
-    public ResponseEntity<List<metodoenvio>> getAllMetodos() {
-        List<metodoenvio> metodoenvio = metodoenvioService.findAll();
+    public ResponseEntity<List<Metodoenvio>> getAllMetodos() {
+        List<Metodoenvio> metodoenvio = metodoenvioService.findAll();
         if (metodoenvio.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -34,8 +34,8 @@ public class metodoEnvioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<metodoenvio> getMetodoById(@PathVariable Integer id) {
-        metodoenvio metodoenvio = metodoenvioService.findById(id);
+    public ResponseEntity<Metodoenvio> getMetodoById(@PathVariable Integer id) {
+        Metodoenvio metodoenvio = metodoenvioService.findById(id);
         if (metodoenvio == null) {
             return ResponseEntity.notFound().build();
         }
@@ -43,15 +43,15 @@ public class metodoEnvioController {
     }
 
     @PostMapping
-    public ResponseEntity<metodoenvio> createMetodoEnvio(@RequestBody metodoenvio metodoenvio) {
-        metodoenvio createdMetodoEnvio = metodoenvioService.save(metodoenvio);
+    public ResponseEntity<Metodoenvio> createMetodoEnvio(@RequestBody Metodoenvio metodoenvio) {
+        Metodoenvio createdMetodoEnvio = metodoenvioService.save(metodoenvio);
         return ResponseEntity.status(201).body(createdMetodoEnvio);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<metodoenvio> updateMetodoEnvio(@PathVariable Integer id, @RequestBody metodoenvio metodoenvio) {
+    public ResponseEntity<Metodoenvio> updateMetodoEnvio(@PathVariable Integer id, @RequestBody Metodoenvio metodoenvio) {
         metodoenvio.setId(id);
-        metodoenvio updatedMetodoEnvio = metodoenvioService.save(metodoenvio);
+        Metodoenvio updatedMetodoEnvio = metodoenvioService.save(metodoenvio);
         if (updatedMetodoEnvio == null) {
             return ResponseEntity.notFound().build();
         }
@@ -59,9 +59,9 @@ public class metodoEnvioController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<metodoenvio> updatePartialMetodoEnvio(@PathVariable Integer id, @RequestBody metodoenvio metodoenvio) {
+    public ResponseEntity<Metodoenvio> updatePartialMetodoEnvio(@PathVariable Integer id, @RequestBody Metodoenvio metodoenvio) {
         metodoenvio.setId(id);
-        metodoenvio updatedMetodoEnvio = metodoenvioService.partialUpdate(metodoenvio);
+        Metodoenvio updatedMetodoEnvio = metodoenvioService.partialUpdate(metodoenvio);
         if (updatedMetodoEnvio == null) {
             return ResponseEntity.notFound().build();
         }

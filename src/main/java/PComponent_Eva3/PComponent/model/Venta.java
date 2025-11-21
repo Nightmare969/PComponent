@@ -17,8 +17,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-
 public class Venta {
 
     @Id
@@ -31,15 +29,15 @@ public class Venta {
 
     @ManyToOne
     @JoinColumn(name = "metodo_pago_id")
-    private MetodoPago metodoPago;
+    private Metodopago metodoPago;
 
     @ManyToOne
     @JoinColumn(name = "metodo_envio_id")
-    private MetodoEnvio metodoEnvio;
+    private Metodoenvio metodoEnvio;
 
     @ManyToOne
     @JoinColumn(name = "estado_id")
-    private EstadoVenta estado;
+    private Estado estado;
 
     @Column(nullable = false)
     private String fecha;

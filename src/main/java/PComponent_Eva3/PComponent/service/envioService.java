@@ -17,15 +17,15 @@ public class envioService {
     @Autowired
     private envioRepository envioRepository;
 
-    public List<envio> findAll() {
+    public List<Envio> findAll() {
         return envioRepository.findAll();
     }
 
-    public envio findById(Integer id) {
+    public Envio findById(Integer id) {
         return envioRepository.findById(id).orElse(null);
     }
 
-    public envio save(envio envio) {
+    public Envio save(Envio envio) {
         return envioRepository.save(envio);
     }
 
@@ -33,8 +33,8 @@ public class envioService {
         envioRepository.deleteById(id);
     }
 
-    public envio partialUpdate(envio envioData) {
-        envio existing = envioRepository.findById(envioData.getId()).orElse(null);
+    public Envio partialUpdate(Envio envioData) {
+        Envio existing = envioRepository.findById(envioData.getId()).orElse(null);
         if (existing == null) {
             return null;
         }

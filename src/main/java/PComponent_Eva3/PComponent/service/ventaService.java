@@ -22,8 +22,7 @@ public class ventaService {
     }
 
     public Venta findById(Integer id) {
-        Venta venta = ventaRepository.findById(id).orElse(null);
-        return venta;
+        return ventaRepository.findById(id).orElse(null);
     }
 
     public Venta save(Venta venta) {
@@ -35,24 +34,24 @@ public class ventaService {
 
         if (existingVenta != null) {
 
-            if (venta.getNombre() != null) {
-                existingVenta.setNombre(venta.getNombre());
+            if (venta.getUsuario() != null) {
+                existingVenta.setUsuario(venta.getUsuario());
             }
 
-            if (venta.getPrecio() != null) {
-                existingVenta.setPrecio(venta.getPrecio());
+            if (venta.getMetodoPago() != null) {
+                existingVenta.setMetodoPago(venta.getMetodoPago());
             }
 
-            if (venta.getCantidad() != null) {
-                existingVenta.setCantidad(venta.getCantidad());
+            if (venta.getMetodoEnvio() != null) {
+                existingVenta.setMetodoEnvio(venta.getMetodoEnvio());
             }
 
-            if (venta.getTelefono() != null) {
-                existingVenta.setTelefono(venta.getTelefono());
+            if (venta.getEstado() != null) {
+                existingVenta.setEstado(venta.getEstado());
             }
 
-            if (venta.getCorreo() != null) {
-                existingVenta.setCorreo(venta.getCorreo());
+            if (venta.getFecha() != null) {
+                existingVenta.setFecha(venta.getFecha());
             }
 
             return ventaRepository.save(existingVenta);
@@ -65,4 +64,5 @@ public class ventaService {
         ventaRepository.deleteById(id);
     }
 }
+
 

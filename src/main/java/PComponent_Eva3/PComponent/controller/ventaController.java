@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import PComponent_Eva3.PComponent.model.venta;
+import PComponent_Eva3.PComponent.model.Venta;
 import PComponent_Eva3.PComponent.service.ventaService;
 
 @RestController
@@ -25,8 +25,8 @@ public class ventaController {
     private ventaService ventaService;
 
     @GetMapping
-    public ResponseEntity<List<venta>> getAllVentas() {
-        List<venta> ventas = ventaService.findAll();
+    public ResponseEntity<List<Venta>> getAllVentas() {
+        List<Venta> ventas = ventaService.findAll();
         if (ventas.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -34,8 +34,8 @@ public class ventaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<venta> getVentaById(@PathVariable Integer id) {
-        venta venta = ventaService.findById(id);
+    public ResponseEntity<Venta> getVentaById(@PathVariable Integer id) {
+        Venta venta = ventaService.findById(id);
         if (venta == null) {
             return ResponseEntity.notFound().build();
         }
@@ -43,15 +43,15 @@ public class ventaController {
     }
 
     @PostMapping
-    public ResponseEntity<venta> createVenta(@RequestBody venta venta) {
-        venta createdVenta = ventaService.save(venta);
+    public ResponseEntity<Venta> createVenta(@RequestBody Venta venta) {
+        Venta createdVenta = ventaService.save(venta);
         return ResponseEntity.status(201).body(createdVenta);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<venta> updateVenta(@PathVariable Integer id, @RequestBody venta venta) {
+    public ResponseEntity<Venta> updateVenta(@PathVariable Integer id, @RequestBody Venta venta) {
         venta.setId(id);
-        venta updatedVenta = ventaService.save(venta);
+        Venta updatedVenta = ventaService.save(venta);
         if (updatedVenta == null) {
             return ResponseEntity.notFound().build();
         }
@@ -59,9 +59,9 @@ public class ventaController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<venta> updatePartialVenta(@PathVariable Integer id, @RequestBody venta venta) {
+    public ResponseEntity<Venta> updatePartialVenta(@PathVariable Integer id, @RequestBody Venta venta) {
         venta.setId(id);
-        venta updatedVenta = ventaService.partialUpdate(venta);
+        Venta updatedVenta = ventaService.partialUpdate(venta);
         if (updatedVenta == null) {
             return ResponseEntity.notFound().build();
         }

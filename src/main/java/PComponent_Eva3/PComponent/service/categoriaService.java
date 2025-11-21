@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import PComponent_Eva3.PComponent.model.Categoria;
 import PComponent_Eva3.PComponent.repository.categoriaRepository;
 import jakarta.transaction.Transactional;
-import PComponent_Eva3.PComponent.model.categoria;
 
 @Service
 @Transactional
@@ -17,36 +17,43 @@ public class categoriaService {
     @Autowired
     private categoriaRepository categoriaRepository;
 
-    public List<categoria> findAll() {
+    public List<Categoria> findAll() {
         return categoriaRepository.findAll();
     }
 
-    public categoria findById(Integer id) {
+    public Categoria findById(Integer id) {
         return categoriaRepository.findById(id).orElse(null);
     }
 
-    public categoria save(categoria categoria) {
+    public Categoria save(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
 
-    public categoria partialUpdate(categoria categoria) {
-        categoria existing = categoriaRepository.findById(categoria.getId()).orElse(null);
-        if (existing == null) {
-            return null;
+    public Categoria partialUpdate(Categoria categoria) {
+        Categoria existingCategoria = categoriaRepository.findById(categoria.getId()).orElse(null);
+
+        if (existingCategoria != null) {
+
+            if (categoria.getNombreCategoria() != null) {
+                existingCategoria.setNombreCategoria(categoria.getNombreCategoria());
+            }
+
+            if (categoria.getDescripcion() != null) {
+                existingCategoria.setDescripcion(categoria.getDescripcion());
+            }
+
+            if (categoria.getCategoriaPadre() != null) {
+                existingCategoria.setCategoriaPadre(categoria.getCategoriaPadre());
+            }
+
+            return categoriaRepository.save(existingCategoria);
         }
 
-        if (categoria.getNombreCategoria() != null) {
-            existing.setNombreCategoria(categoria.getNombreCategoria());
-        }
-
-        if (categoria.getDescripcion() != null) {
-            existing.setDescripcion(categoria.getDescripcion());
-        }
-
-        return categoriaRepository.save(existing);
+        return null;
     }
 
     public void deleteById(Integer id) {
         categoriaRepository.deleteById(id);
     }
 }
+

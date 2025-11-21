@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.service.envioService;
-import PComponent_Eva3.PComponent.model.envio;
+import PComponent_Eva3.PComponent.model.Envio;
 
 @RestController
 @RequestMapping("/api/envio")
@@ -25,8 +25,8 @@ public class envioController {
     private envioService envioService;
 
     @GetMapping
-    public ResponseEntity<List<envio>> getAllEnvios() {
-        List<envio> envios = envioService.findAll();
+    public ResponseEntity<List<Envio>> getAllEnvios() {
+        List<Envio> envios = envioService.findAll();
         if (envios.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -34,8 +34,8 @@ public class envioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<envio> getEnvioById(@PathVariable Integer id) {
-        envio envio = envioService.findById(id);
+    public ResponseEntity<Envio> getEnvioById(@PathVariable Integer id) {
+        Envio envio = envioService.findById(id);
         if (envio == null) {
             return ResponseEntity.notFound().build();
         }
@@ -43,15 +43,15 @@ public class envioController {
     }
 
     @PostMapping
-    public ResponseEntity<envio> createEnvio(@RequestBody envio envio) {
-        envio createdEnvio = envioService.save(envio);
+    public ResponseEntity<Envio> createEnvio(@RequestBody Envio envio) {
+        Envio createdEnvio = envioService.save(envio);
         return ResponseEntity.status(201).body(createdEnvio);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<envio> updateEnvio(@PathVariable Integer id, @RequestBody envio envio) {
+    public ResponseEntity<Envio> updateEnvio(@PathVariable Integer id, @RequestBody Envio envio) {
         envio.setId(id);
-        envio updatedEnvio = envioService.save(envio);
+        Envio updatedEnvio = envioService.save(envio);
         if (updatedEnvio == null) {
             return ResponseEntity.notFound().build();
         }
@@ -59,9 +59,9 @@ public class envioController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<envio> updatePartialEnvio(@PathVariable Integer id, @RequestBody envio envio) {
+    public ResponseEntity<Envio> updatePartialEnvio(@PathVariable Integer id, @RequestBody Envio envio) {
         envio.setId(id);
-        envio updatedEnvio = envioService.partialUpdate(envio);
+        Envio updatedEnvio = envioService.partialUpdate(envio);
         if (updatedEnvio == null) {
             return ResponseEntity.notFound().build();
         }

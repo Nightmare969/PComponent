@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import PComponent_Eva3.PComponent.model.Eetodoenvio;
+import PComponent_Eva3.PComponent.model.Metodoenvio;
 import PComponent_Eva3.PComponent.repository.metodoEnvioRepository;
 import jakarta.transaction.Transactional;
 
@@ -17,21 +17,21 @@ public class metodoenvioService {
     @Autowired
     private metodoEnvioRepository metodoEnvioRepository;
 
-    public List<metodoenvio> findAll() {
+    public List<Metodoenvio> findAll() {
         return metodoEnvioRepository.findAll();
     }
 
-    public metodoenvio findById(Integer id) {
-        metodoenvio metodoenvio = metodoEnvioRepository.findById(id).orElse(null);
+    public Metodoenvio findById(Integer id) {
+        Metodoenvio metodoenvio = metodoEnvioRepository.findById(id).orElse(null);
         return metodoenvio;
     }
 
-    public metodoenvio save(metodoenvio metodoenvio) {
+    public Metodoenvio save(Metodoenvio metodoenvio) {
         return metodoEnvioRepository.save(metodoenvio);
     }
 
-    public metodoenvio partialUpdate(metodoenvio metodoenvio){
-        metodoenvio existingMetodoenvio = metodoEnvioRepository.findById(metodoenvio.getId()).orElse(null);
+    public Metodoenvio partialUpdate(Metodoenvio metodoenvio){
+        Metodoenvio existingMetodoenvio = metodoEnvioRepository.findById(metodoenvio.getId()).orElse(null);
         if (existingMetodoenvio != null) {
             if (metodoenvio.getNombre() != null) {
                 existingMetodoenvio.setNombre(metodoenvio.getNombre());

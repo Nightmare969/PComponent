@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import PComponent_Eva3.PComponent.model.metodopago;
+import PComponent_Eva3.PComponent.model.Metodopago;
 import PComponent_Eva3.PComponent.service.metodopagoService;
 
 @RestController
@@ -25,8 +25,8 @@ public class metodoPagoController {
     private metodopagoService metodopagoService;
 
     @GetMapping
-    public ResponseEntity<List<metodopago>> getAllMetodos() {
-        List<metodopago> metodopagos = metodopagoService.findAll();
+    public ResponseEntity<List<Metodopago>> getAllMetodos() {
+        List<Metodopago> metodopagos = metodopagoService.findAll();
         if (metodopagos.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -34,8 +34,8 @@ public class metodoPagoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<metodopago> getMetodoById(@PathVariable Integer id) {
-        metodopago metodopago = metodopagoService.findById(id);
+    public ResponseEntity<Metodopago> getMetodoById(@PathVariable Integer id) {
+        Metodopago metodopago = metodopagoService.findById(id);
         if (metodopago == null) {
             return ResponseEntity.notFound().build();
         }
@@ -43,15 +43,15 @@ public class metodoPagoController {
     }
 
     @PostMapping
-    public ResponseEntity<metodopago> createMetodoPago(@RequestBody metodopago metodopago) {
-        metodopago createdMetodoPago = metodopagoService.save(metodopago);
+    public ResponseEntity<Metodopago> createMetodoPago(@RequestBody Metodopago metodopago) {
+        Metodopago createdMetodoPago = metodopagoService.save(metodopago);
         return ResponseEntity.status(201).body(createdMetodoPago);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<metodopago> updateMetodoPago(@PathVariable Integer id, @RequestBody metodopago metodopago) {
+    public ResponseEntity<Metodopago> updateMetodoPago(@PathVariable Integer id, @RequestBody Metodopago metodopago) {
         metodopago.setId(id);
-        metodopago updatedMetodoPago = metodopagoService.save(metodopago);
+        Metodopago updatedMetodoPago = metodopagoService.save(metodopago);
         if (updatedMetodoPago == null) {
             return ResponseEntity.notFound().build();
         }
@@ -59,9 +59,9 @@ public class metodoPagoController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<metodopago> updatePartialMetodoPago(@PathVariable Integer id, @RequestBody metodopago metodopago) {
+    public ResponseEntity<Metodopago> updatePartialMetodoPago(@PathVariable Integer id, @RequestBody Metodopago metodopago) {
         metodopago.setId(id);
-        metodopago updatedMetodoPago = metodopagoService.partialUpdate(metodopago);
+        Metodopago updatedMetodoPago = metodopagoService.partialUpdate(metodopago);
         if (updatedMetodoPago == null) {
             return ResponseEntity.notFound().build();
         }

@@ -39,7 +39,7 @@ public class Envio {
     @Column(name = "correo", length = 150, nullable = false) 
     private String correo;
 
-    @Column(name = "id", nullable = false)
+    @Column(name = "venta_id", nullable = false)
     private Integer idVenta;
 
     @Column(name = "nombre", nullable = false)

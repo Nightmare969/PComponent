@@ -1,5 +1,7 @@
 package PComponent_Eva3.PComponent.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,9 +29,8 @@ public class Producto {
     @Column(length = 20,nullable = false,unique = true)
     private Integer numero;
     
-    @OneToMany
-    @JoinColumn(name = "Venta_id", nullable = false)
-    private VentaProducto ventaProducto;
+    @OneToMany(mappedBy = "producto")
+    private List<VentaProducto> ventaProductos;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
@@ -38,5 +39,6 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "marca_id")
     private Marca marca;
+
 }
 

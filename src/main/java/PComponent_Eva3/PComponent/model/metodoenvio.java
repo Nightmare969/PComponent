@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Metodoenvio {
 
     @Id
@@ -25,27 +24,24 @@ public class Metodoenvio {
     @Column(name = "tipoEnvio", length = 50, nullable = false)
     private String tipoEnvio;
 
-    @Column(name = "costo", length = 50, nullable = false)
+    @Column(name = "costo", nullable = false)
     private Integer costo;
 
     @Column(name = "tiempoEntrega", length = 50, nullable = false)
     private String tiempoEntrega;
 
     @Column(name = "direccion", length = 150, nullable = false)
-    private String direccion;   
+    private String direccion;
 
-    @Column(name = "telefono", length = 50, nullable = false)
-    private Integer telefono;   
+    @Column(name = "telefono", nullable = false)
+    private Integer telefono;
 
-    @Column(name = "correo", length = 150, nullable = false) 
+    @Column(name = "correo", length = 150, nullable = false)
     private String correo;
 
-    @Column(name = "id", nullable = false)
+    @Column(name = "venta_id", nullable = false)
     private Integer idVenta;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
-
-
-    
 }

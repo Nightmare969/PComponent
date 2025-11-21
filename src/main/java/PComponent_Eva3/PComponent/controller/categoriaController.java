@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import PComponent_Eva3.PComponent.model.categoria;
+import PComponent_Eva3.PComponent.model.Categoria;
 import PComponent_Eva3.PComponent.service.categoriaService;
 
 @RestController
@@ -25,8 +25,8 @@ public class categoriaController {
     private categoriaService categoriaService;
 
     @GetMapping
-    public ResponseEntity<List<categoria>> getAllCategorias() {
-        List<categoria> categorias = categoriaService.findAll();
+    public ResponseEntity<List<Categoria>> getAllCategorias() {
+        List<Categoria> categorias = categoriaService.findAll();
         if (categorias.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -34,8 +34,8 @@ public class categoriaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<categoria> getCategoriaById(@PathVariable Integer id) {
-        categoria categoria = categoriaService.findById(id);
+    public ResponseEntity<Categoria> getCategoriaById(@PathVariable Integer id) {
+        Categoria categoria = categoriaService.findById(id);
         if (categoria == null) {
             return ResponseEntity.notFound().build();
         }
@@ -43,15 +43,15 @@ public class categoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<categoria> createCategoria(@RequestBody categoria categoria) {
-        categoria createdCategoria = categoriaService.save(categoria);
+    public ResponseEntity<Categoria> createCategoria(@RequestBody Categoria categoria) {
+        Categoria createdCategoria = categoriaService.save(categoria);
         return ResponseEntity.status(201).body(createdCategoria);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<categoria> updateCategoria(@PathVariable Integer id, @RequestBody categoria categoria) {
+    public ResponseEntity<Categoria> updateCategoria(@PathVariable Integer id, @RequestBody Categoria categoria) {
         categoria.setId(id);
-        categoria updatedCategoria = categoriaService.save(categoria);
+        Categoria updatedCategoria = categoriaService.save(categoria);
         if (updatedCategoria == null) {
             return ResponseEntity.notFound().build();
         }
@@ -59,9 +59,9 @@ public class categoriaController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<categoria> updatePartialCategoria(@PathVariable Integer id, @RequestBody categoria categoria) {
+    public ResponseEntity<Categoria> updatePartialCategoria(@PathVariable Integer id, @RequestBody Categoria categoria) {
         categoria.setId(id);
-        categoria updatedCategoria = categoriaService.partialUpdate(categoria);
+        Categoria updatedCategoria = categoriaService.partialUpdate(categoria);
         if (updatedCategoria == null) {
             return ResponseEntity.notFound().build();
         }
