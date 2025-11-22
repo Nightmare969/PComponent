@@ -71,5 +71,3 @@ public class marcaService {
         return false;
     }
 }
-
-// REVISAR

@@ -15,17 +15,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.service.CarritoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import PComponent_Eva3.PComponent.model.Carrito;
 
 
 @RestController
 @RequestMapping("/api/carrito")
+@Tag(name = "Carrito Management System")
 public class carritoController {
 
     @Autowired
     private CarritoService carritoService;
 
     @GetMapping
+    @Operation(summary = "View a list of available carritos")
     public ResponseEntity<List<Carrito>> getAllCarritos() {
         List<Carrito> carritos = carritoService.findAll();
         if (carritos.isEmpty()) {
@@ -35,6 +39,7 @@ public class carritoController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a carrito by Id")
     public ResponseEntity<Carrito> getCarritoById(@PathVariable Integer id) {
         Carrito carrito = carritoService.findById(id);
         if (carrito == null) {
@@ -44,12 +49,14 @@ public class carritoController {
     }
 
     @PostMapping
+    @Operation(summary = "Add a new carrito")
     public ResponseEntity<Carrito> createCarrito(@RequestBody Carrito carrito) {
         Carrito createdCarrito = carritoService.save(carrito);
         return ResponseEntity.status(201).body(createdCarrito);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update an existing carrito")
     public ResponseEntity<Carrito> updateCarrito(@PathVariable Integer id, @RequestBody Carrito carrito) {
         carrito.setId(id);
         Carrito updatedCarrito = carritoService.save(carrito);
@@ -60,6 +67,7 @@ public class carritoController {
     }
 
     @PatchMapping("/{id}")
+    @Operation(summary = "Partial update an existing carrito")
     public ResponseEntity<Carrito> updatePartialCarrito(@PathVariable Integer id, @RequestBody Carrito carrito) {
         carrito.setId(id);
         Carrito updatedCarrito = carritoService.partialUpdate(carrito);
@@ -70,6 +78,7 @@ public class carritoController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a carrito")
     public ResponseEntity<Void> deleteCarrito(@PathVariable Integer id) {
         carritoService.deleteById(id);
         return ResponseEntity.noContent().build();

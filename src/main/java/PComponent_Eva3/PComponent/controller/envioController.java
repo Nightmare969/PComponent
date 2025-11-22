@@ -15,16 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.service.envioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import PComponent_Eva3.PComponent.model.Envio;
 
 @RestController
 @RequestMapping("/api/envio")
+@Tag(name = "Envio Management System")
 public class envioController {
 
     @Autowired
     private envioService envioService;
 
     @GetMapping
+    @Operation(summary = "View a list of available envios")
     public ResponseEntity<List<Envio>> getAllEnvios() {
         List<Envio> envios = envioService.findAll();
         if (envios.isEmpty()) {
@@ -34,6 +38,7 @@ public class envioController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a envio by Id")
     public ResponseEntity<Envio> getEnvioById(@PathVariable Integer id) {
         Envio envio = envioService.findById(id);
         if (envio == null) {
@@ -43,12 +48,14 @@ public class envioController {
     }
 
     @PostMapping
+    @Operation(summary = "Add a new envio")
     public ResponseEntity<Envio> createEnvio(@RequestBody Envio envio) {
         Envio createdEnvio = envioService.save(envio);
         return ResponseEntity.status(201).body(createdEnvio);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update an existing envio")
     public ResponseEntity<Envio> updateEnvio(@PathVariable Integer id, @RequestBody Envio envio) {
         envio.setId(id);
         Envio updatedEnvio = envioService.save(envio);
@@ -59,6 +66,7 @@ public class envioController {
     }
 
     @PatchMapping("/{id}")
+    @Operation(summary = "Partial update an existing envio")
     public ResponseEntity<Envio> updatePartialEnvio(@PathVariable Integer id, @RequestBody Envio envio) {
         envio.setId(id);
         Envio updatedEnvio = envioService.partialUpdate(envio);
@@ -69,6 +77,7 @@ public class envioController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a envio")
     public ResponseEntity<Void> deleteEnvio(@PathVariable Integer id) {
         envioService.deleteById(id);
         return ResponseEntity.noContent().build();

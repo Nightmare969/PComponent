@@ -16,15 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.model.Venta;
 import PComponent_Eva3.PComponent.service.ventaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/venta")
+@Tag(name = "Venta Management System")
 public class ventaController {
 
     @Autowired
     private ventaService ventaService;
 
     @GetMapping
+    @Operation(summary = "View a list of available ventas")
     public ResponseEntity<List<Venta>> getAllVentas() {
         List<Venta> ventas = ventaService.findAll();
         if (ventas.isEmpty()) {
@@ -34,6 +38,7 @@ public class ventaController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a venta by Id")
     public ResponseEntity<Venta> getVentaById(@PathVariable Integer id) {
         Venta venta = ventaService.findById(id);
         if (venta == null) {
@@ -43,12 +48,14 @@ public class ventaController {
     }
 
     @PostMapping
+    @Operation(summary = "Add a new venta")
     public ResponseEntity<Venta> createVenta(@RequestBody Venta venta) {
         Venta createdVenta = ventaService.save(venta);
         return ResponseEntity.status(201).body(createdVenta);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update an existing venta")
     public ResponseEntity<Venta> updateVenta(@PathVariable Integer id, @RequestBody Venta venta) {
         venta.setId(id);
         Venta updatedVenta = ventaService.save(venta);
@@ -59,6 +66,7 @@ public class ventaController {
     }
 
     @PatchMapping("/{id}")
+    @Operation(summary = "Partial update an existing venta")
     public ResponseEntity<Venta> updatePartialVenta(@PathVariable Integer id, @RequestBody Venta venta) {
         venta.setId(id);
         Venta updatedVenta = ventaService.partialUpdate(venta);
@@ -69,6 +77,7 @@ public class ventaController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a venta")
     public ResponseEntity<Void> deleteVenta(@PathVariable Integer id) {
         ventaService.deleteById(id);
         return ResponseEntity.noContent().build();

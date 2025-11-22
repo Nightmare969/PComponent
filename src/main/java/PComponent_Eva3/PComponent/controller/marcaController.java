@@ -16,15 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.model.Marca;
 import PComponent_Eva3.PComponent.service.marcaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/marca")
+@Tag(name = "Marca Management System")
 public class marcaController {
 
     @Autowired
     private marcaService marcaService;
 
     @GetMapping
+    @Operation(summary = "View a list of available marcas")
     public ResponseEntity<List<Marca>> getAllMarcas() {
         List<Marca> marca = marcaService.findAll();
         if (marca.isEmpty()) {
@@ -34,6 +38,7 @@ public class marcaController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a marca by Id")
     public ResponseEntity<Marca> getMarcaById(@PathVariable Integer id) {
         Marca marca = marcaService.findById(id);
         if (marca == null) {
@@ -43,12 +48,14 @@ public class marcaController {
     }
 
     @PostMapping
+    @Operation(summary = "Add a new marca")
     public ResponseEntity<Marca> createMarca(@RequestBody Marca marca) {
         Marca createdMarca = marcaService.save(marca);
         return ResponseEntity.status(201).body(createdMarca);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update an existing marca")
     public ResponseEntity<Marca> updateMarca(@PathVariable Integer id, @RequestBody Marca marca) {
         marca.setId(id);
         Marca updatedMarca = marcaService.save(marca);
@@ -59,6 +66,7 @@ public class marcaController {
     }
 
     @PatchMapping("/{id}")
+    @Operation(summary = "Partial update an existing marca")
     public ResponseEntity<Marca> updatePartialMarca(@PathVariable Integer id, @RequestBody Marca marca) {
         marca.setId(id);
         Marca updatedMarca = marcaService.partialUpdate(marca);
@@ -69,6 +77,7 @@ public class marcaController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a marca")
     public ResponseEntity<Void> deleteMarca(@PathVariable Integer id) {
         marcaService.deleteById(id);
         return ResponseEntity.noContent().build();
