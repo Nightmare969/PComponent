@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import PComponent_Eva3.PComponent.model.Venta;
 
-public interface ventaRepository extends JpaRepository<Venta, Integer>{
+public interface VentaRepository extends JpaRepository<Venta, Integer>{
     
 }

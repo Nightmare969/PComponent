@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import PComponent_Eva3.PComponent.model.Metodopago;
-import PComponent_Eva3.PComponent.repository.metodopagoRepository;
+import PComponent_Eva3.PComponent.repository.MetodopagoRepository;
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 @SuppressWarnings("null")
-public class metodopagoService {
+public class MetodopagoService {
 
     @Autowired
-    private metodopagoRepository metodoPagoRepository;
+    private MetodopagoRepository metodoPagoRepository;
 
     public List<Metodopago> findAll() {
         return metodoPagoRepository.findAll();

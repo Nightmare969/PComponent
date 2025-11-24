@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import PComponent_Eva3.PComponent.model.Envio;
-import PComponent_Eva3.PComponent.repository.envioRepository;
+import PComponent_Eva3.PComponent.repository.EnvioRepository;
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 @SuppressWarnings("null")
-public class envioService {
+public class EnvioService {
 
     @Autowired
-    private envioRepository envioRepository;
+    private EnvioRepository envioRepository;
 
     public List<Envio> findAll() {
         return envioRepository.findAll();

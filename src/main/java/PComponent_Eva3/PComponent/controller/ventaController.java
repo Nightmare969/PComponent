@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/api/venta")
 @Tag(name = "Venta Management System")
-public class ventaController {
+public class VentaController {
 
     @Autowired
     private ventaService ventaService;

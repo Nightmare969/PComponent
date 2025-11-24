@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.model.Metodopago;
-import PComponent_Eva3.PComponent.service.metodopagoService;
+import PComponent_Eva3.PComponent.service.MetodopagoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/metodoPago")
 @Tag(name = "Metodo Pago Management System")
-public class metodoPagoController {
+public class MetodoPagoController {
 
     @Autowired
-    private metodopagoService metodopagoService;
+    private MetodopagoService metodopagoService;
 
     @GetMapping
     @Operation(summary = "View a list of available metodo pago")

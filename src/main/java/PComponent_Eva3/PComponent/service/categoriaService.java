@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import PComponent_Eva3.PComponent.model.Categoria;
-import PComponent_Eva3.PComponent.repository.categoriaRepository;
+import PComponent_Eva3.PComponent.repository.CategoriaRepository;
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 @SuppressWarnings("null")
-public class categoriaService {
+public class CategoriaService {
 
     @Autowired
-    private categoriaRepository categoriaRepository;
+    private CategoriaRepository categoriaRepository;
 
     public List<Categoria> findAll() {
         return categoriaRepository.findAll();

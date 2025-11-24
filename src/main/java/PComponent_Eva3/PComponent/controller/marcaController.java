@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.model.Marca;
-import PComponent_Eva3.PComponent.service.marcaService;
+import PComponent_Eva3.PComponent.service.MarcaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/marca")
 @Tag(name = "Marca Management System")
-public class marcaController {
+public class MarcaController {
 
     @Autowired
-    private marcaService marcaService;
+    private MarcaService marcaService;
 
     @GetMapping
     @Operation(summary = "View a list of available marcas")

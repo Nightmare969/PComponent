@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import PComponent_Eva3.PComponent.service.envioService;
+import PComponent_Eva3.PComponent.service.EnvioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import PComponent_Eva3.PComponent.model.Envio;
@@ -22,10 +22,10 @@ import PComponent_Eva3.PComponent.model.Envio;
 @RestController
 @RequestMapping("/api/envio")
 @Tag(name = "Envio Management System")
-public class envioController {
+public class EnvioController {
 
     @Autowired
-    private envioService envioService;
+    private EnvioService envioService;
 
     @GetMapping
     @Operation(summary = "View a list of available envios")

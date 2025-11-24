@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import PComponent_Eva3.PComponent.model.Metodopago;
 
-public interface metodopagoRepository extends JpaRepository<Metodopago, Integer>{
+public interface MetodopagoRepository extends JpaRepository<Metodopago, Integer>{
     
 }

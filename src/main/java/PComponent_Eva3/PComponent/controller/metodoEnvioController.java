@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.model.Metodoenvio;
-import PComponent_Eva3.PComponent.service.metodoenvioService;
+import PComponent_Eva3.PComponent.service.MetodoenvioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/metodoEnvio")
 @Tag(name = "Metodo Envio Management System")
-public class metodoEnvioController {
+public class MetodoEnvioController {
 
     @Autowired
-    private metodoenvioService metodoenvioService;
+    private MetodoenvioService metodoenvioService;
 
     @GetMapping
     @Operation(summary = "View a list of available metodo envio")

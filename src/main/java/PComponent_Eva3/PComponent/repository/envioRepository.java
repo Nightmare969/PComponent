@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import PComponent_Eva3.PComponent.model.Envio;
 
-public interface envioRepository extends JpaRepository<Envio, Integer>{
+public interface EnvioRepository extends JpaRepository<Envio, Integer>{
     
 }

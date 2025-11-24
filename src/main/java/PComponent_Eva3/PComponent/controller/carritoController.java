@@ -23,7 +23,7 @@ import PComponent_Eva3.PComponent.model.Carrito;
 @RestController
 @RequestMapping("/api/carrito")
 @Tag(name = "Carrito Management System")
-public class carritoController {
+public class CarritoController {
 
     @Autowired
     private CarritoService carritoService;

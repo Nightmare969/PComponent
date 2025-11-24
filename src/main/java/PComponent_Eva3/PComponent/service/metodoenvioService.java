@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import PComponent_Eva3.PComponent.model.Metodoenvio;
-import PComponent_Eva3.PComponent.repository.metodoEnvioRepository;
+import PComponent_Eva3.PComponent.repository.MetodoEnvioRepository;
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 @SuppressWarnings("null")
-public class metodoenvioService {
+public class MetodoenvioService {
     
     @Autowired
-    private metodoEnvioRepository metodoEnvioRepository;
+    private MetodoEnvioRepository metodoEnvioRepository;
 
     public List<Metodoenvio> findAll() {
         return metodoEnvioRepository.findAll();
