@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import PComponent_Eva3.PComponent.model.Venta;
-import PComponent_Eva3.PComponent.service.ventaService;
+import PComponent_Eva3.PComponent.service.VentaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -25,7 +25,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class VentaController {
 
     @Autowired
-    private ventaService ventaService;
+    private VentaService ventaService;
 
     @GetMapping
     @Operation(summary = "View a list of available ventas")

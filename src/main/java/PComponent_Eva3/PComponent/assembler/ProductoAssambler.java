@@ -1,4 +1,4 @@
-package PComponent_Eva3.PComponent.assambler;
+package PComponent_Eva3.PComponent.assembler;
 
 public class ProductoAssambler {
     
